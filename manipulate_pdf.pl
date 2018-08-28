@@ -3,18 +3,13 @@ use warnings;
 use strict;
 use CAM::PDF;
 
-# replace file-name.pdf with real file name
-my $file_to_edit = "file-name.pdf";
-
-# Create an object of CAM::PDF
-my $pdf = CAM::PDF->new("$file_to_edit");
-
-# get the page content of page number 1
+my $pdf = CAM::PDF->new('Ritesh_Kamal_CV.pdf'); 
 my $page1 = $pdf->getPageContent(1);
 
-# Replace the string globally on page 1
-$page1 =~ s/replace/with-this/gim;
+$page1 =~ s/5.5/6.8/g;
 
-# Set it and save it in new file
-$pdf->setPageContent(1, $page1);
-$pdf->cleanoutput("Mahi-$file_to_edit");
+$pdf->setPageContent(1,$page1);
+$pdf->save();
+$pdf->cleanoutput('out1.pdf');
+
+
